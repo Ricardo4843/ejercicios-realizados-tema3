@@ -16,6 +16,18 @@ Proyecto de Eclipse. Cada ejercicio tiene una clase con su propio `main` que lo 
 | 3.8. Parking | `Parking`, `SensorEntrada`, `SensorSalida`, `Supervisor`, `Ejercicio8Parking` | Monitor con capacidad dada en el constructor: `entra()` espera mientras está lleno; `sale()` libera una plaza y hace `notifyAll()` para despertar a los coches que esperan. `detectaVehiculo()` y `abrirBarrera()` se dan por programados en el enunciado: aquí son simulaciones |
 | 3.9. Bloqueo vivo | `Ejercicio9BloqueoVivo` | Livelock: cada hebra coge un recurso, no consigue el otro, lo devuelve y vuelve a empezar a la vez que la otra. Están activas pero no avanzan (en un deadlock estarían dormidas). Soluciones: ir por turnos, coger los recursos en el mismo orden o esperar un tiempo aleatorio antes de reintentar |
 
+## Monitores de exámenes de otros años (`src/concurrencia/examen*/`)
+
+Cada paquete tiene el monitor y un `Main` que lanza varias hebras para probarlo. Las clases que el enunciado da por hechas (`Muestra`, `Estacion`...) son simulaciones.
+
+| Ejercicio | Paquete | Qué hace el monitor |
+|---|---|---|
+| Parcial 2 2014: laboratorio con N puestos | `examen2014laboratorio` | `entra()` no espera, devuelve si hay puesto; el analista espera muestras y el investigador su resultado; con M muestras pendientes, el investigador espera para entregar |
+| Parcial 2 2017: cajón de muestras | `examen2017cajon` | Productor-consumidor con capacidad N: `coloca()` espera si está lleno, `extrae()` si está vacío |
+| Parcial 2 2019: dispensador de reactivo | `examen2019dispensador` | El primero que lo encuentra vacío avisa al ayudante; al reponer, la dosis queda reservada para el que avisó |
+| Parcial 2 2021: máximo 3 trenes por línea | `examen2021trenes` | El monitor va dentro de `LineaMetroImpl`; `arrancaTren()` crea la hebra con una lambda que pide paso, se mueve y avisa al terminar |
+| Ordinario 2025-26: bandeja de hamburguesas | `examenordinario2526bandeja` | Capacidad 5 y espera mientras se limpia; el `setLimpiando()` también hace `notifyAll()` |
+
 ## Cómo ejecutarlo
 
 - **Eclipse:** File > Import > Existing Projects into Workspace, y Run As > Java Application sobre cualquier clase con `main`.
