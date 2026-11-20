@@ -23,6 +23,7 @@ Cada paquete tiene el monitor y un `Main` que lanza varias hebras para probarlo.
 | Ejercicio | Paquete | Qué hace el monitor |
 |---|---|---|
 | Parcial 2 2014: laboratorio con N puestos | `examen2014laboratorio` | `entra()` no espera, devuelve si hay puesto; el analista espera muestras y el investigador su resultado; con M muestras pendientes, el investigador espera para entregar |
+| Parcial 2 2015: instrumentos y técnico de mantenimiento | `examen2015laboratorio` | `toma()` espera si no hay instrumentos o se está revisando; `revisar()` espera a que se devuelvan todos y `terminar()` despierta a los investigadores |
 | Parcial 2 2017: cajón de muestras | `examen2017cajon` | Productor-consumidor con capacidad N: `coloca()` espera si está lleno, `extrae()` si está vacío |
 | Parcial 2 2019: dispensador de reactivo | `examen2019dispensador` | El primero que lo encuentra vacío avisa al ayudante; al reponer, la dosis queda reservada para el que avisó |
 | Parcial 2 2021: máximo 3 trenes por línea | `examen2021trenes` | El monitor va dentro de `LineaMetroImpl`; `arrancaTren()` crea la hebra con una lambda que pide paso, se mueve y avisa al terminar |
